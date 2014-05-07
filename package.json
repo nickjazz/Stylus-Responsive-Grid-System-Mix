@@ -1,0 +1,12 @@
+{
+  "name": "stylus-grid",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Kim",
+  "license": "Released under the MIT license - http://opensource.org/licenses/MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-stylus": "~0.15.0"
+  }
+}

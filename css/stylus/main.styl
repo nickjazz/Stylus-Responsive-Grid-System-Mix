@@ -1,0 +1,98 @@
+//performance css
+body
+	margin 0
+	padding 0
+	font-family: 'Lato', sans-serif;
+	letter-spacing 2px
+	color #333
+
+.any-wrapper
+	max-width 1170px
+	margin 40px auto
+	text-align center
+	line-height 200px
+	.youclass
+		box-sizing border-box
+		float left
+	&:after
+		content ''
+		display block
+		clear both
+
+.bg1
+	background #FD9CAA
+
+.bg2
+	background #A4A2AF
+
+.bg3
+	background #9BD7D0
+
+.bg4
+	background #AEE88A
+
+.bg5
+	background #E1EFA5
+
+.bg6
+	background #BF744F
+
+
+.title
+	@extend .any-wrapper .youclass, .bg1
+	height 200px
+
+.contain
+	@extend .any-wrapper .youclass, .bg2
+	text-align center
+	text-transform uppercase
+
+/*
+* Start the stylus 
+* Set the Global width 
+*/
+GlobalWidth   = 100% 
+
+// how many columns you want?
+Columns       = 12
+
+// Average columns !
+num           = GlobalWidth / Columns
+
+// for order columns with '.mobile-first'
+push()
+	&.mobile-first
+		left GlobalWidth - arguments
+		if arguments != GlobalWidth
+			+div
+				right arguments
+
+// for dynamic width each break point
+rwdwidth()
+	width arguments * num
+	push(@width)
+
+co(mobile,tablet,netbook,notebook,desktop)
+	@media only screen
+		width mobile * num
+		float left
+		position relative
+		min-height 1px
+	@media only screen and (min-width:768px)
+		rwdwidth(tablet)
+	@media only screen and (min-width:960px)
+		rwdwidth(netbook)
+	@media only screen and (min-width:1280px)
+		rwdwidth(notebook)
+	@media only screen and (min-width:1600px)
+		rwdwidth(desktop)
+ 
+// Start your class
+.youclass
+	co(12,8,6,4,2)
+
+.title
+	co(12,12,3,3,3)
+
+.contain
+	co(12,12,9,9,9)
